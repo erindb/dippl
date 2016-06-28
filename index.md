@@ -17,7 +17,7 @@ My fork of [dippl.org](dippl.org).
 
 {% for p in sorted_pages %}
     {% if p.layout == 'sailors-tutorial' %}
-- [{{ p.title }}](.{{ p.url }})<br>
+- [{{ p.title }}]({{ site.url }}{{ p.url }})<br>
     <em>{{ p.description }}</em>
     {% endif %}
 {% endfor %}
