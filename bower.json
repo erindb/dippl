@@ -1,10 +1,9 @@
 {
   "name": "dippl",
   "version": "0.0.1",
-  "homepage": "https://github.com/probmods/dippl",
+  "homepage": "https://github.com/erindb/dippl",
   "authors": [
-    "Noah Goodman <ngoodman@stanford.edu>",
-    "Andreas Stuhlmueller <andreas@stuhlmueller.org>"
+    "Erin Bennett <erindb@stanford.edu>",
   ],
   "main": "index.md",
   "private": true,
