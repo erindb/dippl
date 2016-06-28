@@ -1,5 +1,5 @@
 {
-  "name": "dippl",
+  "name": "webppl-pages",
   "version": "0.0.0",
   "description": "",
   "main": "index.md",
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/erindb/dippl.git"
+    "url": "git://github.com/erindb/webppl-pages.git"
   },
   "bugs": {
-    "url": "https://github.com/erindb/dippl/issues"
+    "url": "https://github.com/erindb/webppl-pages/issues"
   },
-  "homepage": "https://github.com/erindb/dippl"
+  "homepage": "https://github.com/erindb/webppl-pages"
 }
