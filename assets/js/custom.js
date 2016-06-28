@@ -16,9 +16,17 @@ function euclideanDistance(v1, v2){
 function setupCodeBoxes(){
   // TODO: optimize this, (maybe have wpEditor.setup take a content option?)
   $("pre:not(#bibtex)").map(function(i,el) {
+    var className = $(el).attr('class');
+    var idName = 'codeblock_' + i;
     var firstLine = $(el).text().split("\n")[0];
     var language = (firstLine == '// language: javascript' ? 'javascript' : 'webppl');
-    wpEditor.setup(el, {language: language});    
+    wpEditor.setup(el, {language: language, class: className, id: idName}); 
+    if (className == 'answer') {
+      var button = $(el).before("<button id='button_" + idName + "'>Show instructors' code</button>")
+      $('#button_' + idName).click(function() {
+        $('#' + idName).show();
+      });
+    } 
   });
 }
 

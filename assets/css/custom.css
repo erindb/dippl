@@ -112,3 +112,9 @@ div.container ul {
 pre#bibtex {
    display: none;
 }
+
+
+/* SAILORS */
+div.answer {
+   display: none;
+}
