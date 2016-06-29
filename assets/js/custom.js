@@ -20,7 +20,7 @@ function setupCodeBoxes(){
     var idName = 'codeblock_' + i;
     var firstLine = $(el).text().split("\n")[0];
     var language = (firstLine == '// language: javascript' ? 'javascript' : 'webppl');
-    wpEditor.setup(el, {language: language, classes: [className, idName]}); 
+    wpEditor.setup(el, {language: language, class: [className, idName].join(' ')}); 
 
     if (className == 'answer') {
       var button = $(el).before("<button id='button_" + idName + "'>Show instructors' code</button>")
