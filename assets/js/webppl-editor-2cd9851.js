@@ -45345,19 +45345,15 @@ var setupCode = function (preEl, options) {
   options = _.defaults(options || {}, {
     trim: true,
     language: 'webppl',
-    class: null,
-    id: null
+    classes: [],
   });
 
   var parentDiv = preEl.parentNode;
 
   var editorDiv = document.createElement('div');
-  if (options.class) {
-    $(editorDiv).attr('class', options.class);
-  }
-  if (options.id) {
-    $(editorDiv).attr('id', options.id);
-  }
+  (options.classes).map(function(c) {
+    $(editorDiv).addClass(c);
+  });
 
   var code = $(preEl).text();
   if (options.trim) {

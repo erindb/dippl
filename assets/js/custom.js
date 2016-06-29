@@ -20,13 +20,15 @@ function setupCodeBoxes(){
     var idName = 'codeblock_' + i;
     var firstLine = $(el).text().split("\n")[0];
     var language = (firstLine == '// language: javascript' ? 'javascript' : 'webppl');
-    wpEditor.setup(el, {language: language, class: className, id: idName}); 
+    wpEditor.setup(el, {language: language, classes: [className, idName]}); 
+
     if (className == 'answer') {
       var button = $(el).before("<button id='button_" + idName + "'>Show instructors' code</button>")
       $('#button_' + idName).click(function() {
-        $('#' + idName).show();
+        $('.' + idName).show();
       });
-    } 
+    }
+
   });
 }
 
