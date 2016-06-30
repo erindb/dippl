@@ -13,7 +13,16 @@ My fork of [dippl.org](dippl.org).
 
 {% assign sorted_pages = site.pages | sort:"name" %}
 
-### Chapters
+### Updates
+
+{% for p in sorted_pages %}
+    {% if p.layout == 'update' %}
+- [{{ p.title }}]({{ site.url }}{{ site.baseurl }}{{ p.url }})<br>
+    <em>{{ p.description }}</em>
+    {% endif %}
+{% endfor %}
+
+### SAILORS
 
 {% for p in sorted_pages %}
     {% if p.layout == 'sailors-tutorial' %}
