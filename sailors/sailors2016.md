@@ -12,13 +12,15 @@ description: Examples of recursive inference from game theory.
 
 <!-- we actually will go after Noah's talk, so that helps! -->
 
-Inductive reasoning
+Inductive reasoning is a type of reasoning in which the conclusions that are reached are probable (rather than certain) based on the evidence provided. The premises act as evidence for the validity of the conclusions, but this type of reasoning is inherently uncertain and thus the conclusions are merely probable to some degree - and may still be false. Probability theory (e.g. Bayes' rule) is one example of inductive reasoning.
+
+In our examples, we will use Bayesian inference to run simulations of popular game theory games. As we will see, we can use nested inference to do even better in these games. 
 
 ## Coordination Game
 
 Let's play a game.
 
-**Question 1** Imagine that you and all the other SAILORS students are going to play a game. We'll drop you all of in different places in New York City and we'll give you a specific day and time when you have to all meet up. YOU CANNOT CONTACT EACHOTHER BEFORE YOU MEET UP. Where in the city will you try to meet?
+**Question 1** Imagine that you and all the other SAILORS students are going to play a game. We'll drop all of you off in different places in New York City and we'll give you a specific day and time at which you all have to meet up. YOU CANNOT CONTACT EACH OTHER BEFORE YOU MEET UP. Where in the city will you try to meet?
 {: .click2seeQn #qn1}
 
 **Question 2** What if we didn't tell you the time, but we told you the day and the place. What time would you all meet there?
@@ -31,9 +33,9 @@ Let's play a game.
 
 ### Making a model
 
-We can represent this game and many others like it as a model of **reasoning about reasoning**. Psychologists often call this **theory of mind**. You have a theory of other people's beliefs and goals that helps you predict their decisions. You often don't *know* what people will do, but you can make good guesses.
+We can represent this game and many others like it as a model of **reasoning about reasoning**. Psychologists often call this **theory of mind**. You have a theory about other people's beliefs and goals that helps you predict their decisions. You often don't *know* what people will do, but you can make good guesses.
 
-**Probabilistic programming languages** like WebPPL give a really nice interface for writing models of **reasoning about reasoning**. Let's model the following coordination game:
+**Probabilistic programming languages** like WebPPL give a really nice interface for writing models of reasoning about reasoning. Let's model the following coordination game:
 
 Alice and Bob are talking about meeting up for coffee in an hour, but Bob's cell phone cuts out before they can decide on a place and they can't get back in contact with one another. There are a bunch of coffee shops on campus. Alice and Bob usually go to either Bytes (40% of the time) or Coupa (30% of the time), but they sometimes go to Starbucks (20%) or CoHo (10%). They're going to try to meet up, each guessing where the other person will go.
 
