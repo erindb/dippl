@@ -194,7 +194,7 @@ How do your expectations about other people's guesses effect your guess?
 
 What if you *knew* everyone in the game was going to pick a perfect strategy?
 
-## Prisoner's Dilemma
+## Optional: Prisoner's Dilemma
 
 Alice and Bob have both been arrested and are facing a long stint in jail. The prosecutors lack sufficient evidence to convict them of the main charge without further evidence, so they simultaneously offer both prisoners a bargain: 
 
@@ -207,5 +207,3 @@ Alice and Bob have both been arrested and are facing a long stint in jail. The p
 Alice and Bob are both in solitary confinement and have no means of communication. What should they do?
 
 Now imagine that Alice and Bob play the prisoner's dilemma more than once in succession. How should their strategy change? This is called the **iterated prisoner's dilemma**.
-
-Model it
