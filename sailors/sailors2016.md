@@ -14,7 +14,7 @@ description: Examples of recursive inference from game theory.
 
 Inductive reasoning is a type of reasoning in which the conclusions that are reached are probable (rather than certain) based on the evidence provided. The premises act as evidence for the validity of the conclusions, but this type of reasoning is inherently uncertain and thus the conclusions are merely probable to some degree - and may still be false. Probability theory (e.g. Bayes' rule) is one example of inductive reasoning.
 
-In our examples, we will use Bayesian inference to run simulations of popular game theory games. As we will see, we can use nested inference to do even better in these games. 
+In our examples, we will use Bayesian inference to run simulations of popular game theory games. As we will see, we can use nested inference to capture some interesting properties about these games and do even better. 
 
 ## Coordination Game
 
