@@ -28,6 +28,14 @@ Explanations like "B because A" might update the posterior distributions of...
 	* Strengths of the causal connections
 	* Background probabilities of all variables
 
+Here are some potential problems with the causal structure:
+
+The parameters of the causal structure of the world are not independent of one another, so when we counterfactualize, we should probably sample a model at uniform from the space of all possible parameters.
+
+But when we do that, here's another problem: when we evaluate the truth of a counterfactual statement, the causal relationships need to stay in place, at least to some extent. Otherwise they couldn't communicate much about those causal relationships, could they? Hopefully, the stickiness of the model parameters to the actual world is enough.
+
+## Semantics
+
 Since I have the intuition that "B because A" can communicate "There is a causal relationship between A and B," let's start with that as our source of uncertainty.
 
 For starters, let's have B true if and only if there's a causal link between the two variables *and* A happens to be true.
