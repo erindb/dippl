@@ -4,6 +4,12 @@ title: SAILORS 2016 Tutorial
 description: Examples of recursive inference from game theory.
 ---
 
+## Start up
+
+In this tutorial, we're going to use a language called WebPPL (pronouced "web people"). PPL stands for **probabilistic programming language**. WebPPL is a **dialect** of JavaScript, so if you've coded in JavaScript before, a lot of things will be familiar. (There are also a lot of similarities ot python.) But WebPPL has some restrictions and some added functionality to handle **probabilities** in cool ways. We'll run code boxes like the one below in this tutorial.
+
+Click "run" to load the WebPPL language on this page.
+
 ~~~~
 "start WebPPL"
 ~~~~
@@ -14,24 +20,56 @@ description: Examples of recursive inference from game theory.
 
 Inductive reasoning is a type of reasoning in which the conclusions that are reached are probable (rather than certain) based on the evidence provided. The premises act as evidence for the validity of the conclusions, but this type of reasoning is inherently uncertain and thus the conclusions are merely probable to some degree - and may still be false. Probability theory (e.g. Bayes' rule) is one example of inductive reasoning.
 
-In our examples, we will use Bayesian inference to run simulations of popular game theory games. As we will see, we can use nested inference to capture some interesting properties about these games and do even better. 
+Humans beings live in an uncertain world where things are constantly changing and unknown. We have to reason inductively about the world and about each other. We can use probabilistic models to understand how people make inferences and decisions under uncertainty.
 
-## Coordination Game
+In our examples, we will use Bayesian inference to run simulations of popular game theory games that require agents to reason about other agents. As we will see, we can use nested inference to capture some interesting properties about these games and do even better.
 
-Let's play a game.
+## Let's play some games
 
-**Question 1** Imagine that you and all the other SAILORS students are going to play a game. We'll drop all of you off in different places in New York City and we'll give you a specific day and time at which you all have to meet up. YOU CANNOT CONTACT EACH OTHER BEFORE YOU MEET UP. Where in the city will you try to meet?
+### Prisoner's Dilemma
+
+Player 1 and Player 2 have both been arrested and are facing a long stint in jail. The prosecutors lack sufficient evidence to convict them of the main charge without further evidence, so they simultaneously offer both prisoners a bargain: 
+
+1. If Player 1 and Player 2 each testify against the other, each of them serves 5 years in prison.
+
+2. If one of them betrays the other while the other remains silent, the betrayer will be set free while the betrayed will serve 10 years in prison. 
+
+3. If Player 1 and Player 2 both remain silent, both of them will only serve 2 years in prison (on lesser charges).
+
+Player 1 and Player 2 are both in solitary confinement and have no means of communication. <!-- What should they do? -->
+
+**Discuss** What factors might affect this decision?
+
+<!-- **Discuss** Now imagine that Alice and Bob play the prisoner's dilemma more than once in succession. How should their strategy change? This is called the **iterated prisoner's dilemma**.
+
+**Discuss**  -->
+
+### Guess 2/3 the average
+
+Everyone in the room picks a real number between 0 and 100, inclusive. We'll average all the numbers. Whoever chose the number closes to 2/3 of that average wins.
+
+Let's play the game!
+
+**Discuss** How do your expectations about other people's guesses effect your guess?
+
+**Discuss** What if you *knew* everyone in the game was going to pick a perfect strategy?
+
+### Coordination Games
+
+For the next three questions, when we say to, read the question and write down your answer without talking with anyone!
+
+**Question 1** Imagine that you and all the other SAILORS students are going to play a game. We'll drop all of you off in different places in New York City and we'll give you a specific day and time at which you all have to meet up. YOU CANNOT CONTACT EACH OTHER BEFORE YOU MEET UP. Where in the city will you try to meet? Remember, you win the game if you write down *the same answer* as the other students.
 {: .click2seeQn #qn1}
 
-**Question 2** What if we didn't tell you the time, but we told you the day and the place. What time would you all meet there?
+**Question 2** What if we didn't tell you the time, but we told you the day and the place. What time would you all meet there? Remember, you win the game if you write down *the same answer* as the other students.
 {: .click2seeQn #qn2}
 
-**Question 3** Imagine you're all going to play another game. In this game, you write down an amount of money. If you all pick the same amount of money, your group actually gets that amount of money as a prize. Otherwise, no one gets any money. It could be *any* amount of money, but you all have to pick the same amount to win and you cannot discuss your answer with each other.
+**Question 3** Imagine you're all going to play a lottery game. In this game, you write down an amount of money. If you *all* pick the same amount of money, you actually get that amount of money as a prize. Otherwise, no one gets any money. It could be *any* amount, but you all have to pick the same amount to win and you cannot discuss your answer with each other. Remember, you win the game if you write down *the same answer* as the other students.
 {: .click2seeQn #qn3}
 
 **Discuss** What are some things you thought about when making your decision?
 
-### Making a model
+## Making a model
 
 We can represent this game and many others like it as a model of **reasoning about reasoning**. Psychologists often call this **theory of mind**. You have a theory about other people's beliefs and goals that helps you predict their decisions. You often don't *know* what people will do, but you can make good guesses.
 
@@ -103,6 +141,10 @@ Wow, most of the time they don't meet up, because they're not *reasoning about e
 var infer = function(fn) {return Infer({method: 'enumerate'}, fn)};
 var plotDistribution = function(fn) {return viz.auto(infer(fn))};
 ///
+///fold:
+var infer = function(fn) {return Infer({method: 'enumerate'}, fn)};
+var plotDistribution = function(fn) {return viz.auto(infer(fn))};
+///
 var sampleCoffeeShop = function() {
 	return categorical(
 		[0.4,     0.3,     0.2,         0.1   ],
@@ -110,27 +152,36 @@ var sampleCoffeeShop = function() {
 	)
 }
 
-var coordinateCoffeeShop = function() {
-  // we don't *know* where the other person will go,
-  // but we can guess, and choose our location accordingly
-  var myLocation = sampleCoffeeShop()
-  var theirLocation = sampleCoffeeShop()
+// They each think about each other
 
-  // YOUR CODE HERE:
-  var sameLocation = ( ... )
+// alice thinks of a random coffee shop
+// but only goes there if she thinks there's a
+// relatively high probability that bob will also be there
+var aliceLocation = function() {
+  var alice = sampleCoffeeShop()
+  var pretendBob = sampleCoffeeShop()
+  
+  condition(alice == pretendBob)
+  
+  return alice
+}
 
-  // make sure `sameLocation` is true.
-  condition(sameLocation)
-
-  return myLocation
+// bob does the same thing
+var bobLocation = function() {
+  var bob = sampleCoffeeShop()
+  var pretendAlice = sampleCoffeeShop()
+  
+  condition(bob == pretendAlice)
+  
+  return bob
 }
 
 var aliceAndBobMeetup = function() {
-	var alice = coordinateCoffeeShop()
-	var bob = coordinateCoffeeShop()
+	var alice = aliceLocation()
+	var bob = bobLocation()
 	// to see the full distribution...
-	return (alice == bob) // comment out this line
-	// return {Alice: alice, Bob: bob} // and uncomment this line
+	// return (alice == bob) // comment out this line
+	return {Alice: alice, Bob: bob} // and uncomment this line
 }
 plotDistribution(aliceAndBobMeetup)
 ~~~
@@ -139,7 +190,11 @@ That's better... but Bob and Alice can do better if they reason more **recursive
 
 ![ever seen a reflection inside a reflection in a mirror](http://minimalmonkey.com/images/blog/junith-recursion.jpg){:width="200px"}
 
-That is, they could realize that the *other* person is trying to reason about *them*, too. We can't quite do this forever, but we can do it a bunch of times. Bob can reason about Alice reasoning about Bob reasoning about where Alice will go (that's 3 nested inferences!).
+Recursion is what happens when a function (or a story, or an image) references itself. So you end up with a function inside a function inside a function inside a function...
+
+![or a story embedded in a story embedded in a story...](http://atlasofscience.org/wp-content/uploads/2015/11/Fig-1-Coolidge.gif){:width="400px"}
+
+If Alice and Bob could were reasoning recursively, they could realize that the *other* person is trying to reason about *them*, too. We can't quite do this forever, but we can do it a bunch of times. Alice can reason about Bob reasoning about Alice reasoning about where Bob will go (that's 3 nested inferences!).
 
 ~~~
 ///fold:
@@ -162,10 +217,7 @@ var coordinateCoffeeShop = function(levelOfRecursion) {
                        sampleCoffeeShop() : 
                        coordinateCoffeeShop(levelOfRecursion-1))
 
-  // YOUR CODE HERE:
   var sameLocation = ( myLocation==theirLocation )
-
-  // make sure `sameLocation` is true.
   condition(sameLocation)
 
   return myLocation
@@ -184,26 +236,15 @@ var aliceAndBobMeetup = function() {
 plotDistribution(aliceAndBobMeetup)
 ~~~
 
+**Exercise** Try changing the `levelOfRecursion`. What happens? Why?
+
 **Exercise** Try changing the probabilitities in the original `sampleCoffeeShop` function. How does that effect the choices that Alice and Bob make?
 
-## Guess 2/3 of the average
+## References
 
-Let's play the game!
+Here are some applications of nested inductive reasoning models like the one we talked about:
 
-How do your expectations about other people's guesses effect your guess?
+<!-- **Language understanding**
 
-What if you *knew* everyone in the game was going to pick a perfect strategy?
+**Competetive strategies** -->
 
-## Optional: Prisoner's Dilemma
-
-Alice and Bob have both been arrested and are facing a long stint in jail. The prosecutors lack sufficient evidence to convict them of the main charge without further evidence, so they simultaneously offer both prisoners a bargain: 
-
-1. If Alice and Bob each testify against the other, each of them serves 5 years in prison.
-
-2. If one of them betrays the other while the other remains silent, the betrayer will be set free while the betrayed will serve 10 years in prison. 
-
-3. If Alice and Bob both remain silent, both of them will only serve 2 years in prison (on lesser charges).
-
-Alice and Bob are both in solitary confinement and have no means of communication. What should they do?
-
-Now imagine that Alice and Bob play the prisoner's dilemma more than once in succession. How should their strategy change? This is called the **iterated prisoner's dilemma**.
