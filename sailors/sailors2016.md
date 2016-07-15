@@ -48,6 +48,16 @@ Player 1 and Player 2 are both in solitary confinement and have no means of comm
 
 Everyone in the room picks a real number between 0 and 100, inclusive. We'll average all the numbers. Whoever chose the number closes to 2/3 of that average wins.
 
+**Exercise** Write a program that determines 2/3 of the average of a list of numbers:
+
+~~~
+var allNumbers = []
+
+var twoThirdsOfAverage = ...
+
+display(twoThirdsOfAverage)
+~~~
+
 Let's play the game!
 
 **Discuss** How do your expectations about other people's guesses effect your guess?
@@ -244,7 +254,14 @@ plotDistribution(aliceAndBobMeetup)
 
 Here are some applications of nested inductive reasoning models like the one we talked about:
 
-<!-- **Language understanding**
+**Language understanding**
 
-**Competetive strategies** -->
+Kao, J. T., Bergen, L., & Goodman, N. D. (2014). [Formalizing the pragmatics of metaphor understanding](http://cocolab.stanford.edu/papers/KaoEtAl2014-Cogsci.pdf). In Proceedings of the 36th annual meeting of the Cognitive Science Society (pp. 719-724).
 
+Goodman, N. D., & Stuhlmüller, A. (2013). [Knowledge and implicature: Modeling language understanding as social cognition](https://web.stanford.edu/~ngoodman/papers/KnowledgeImplicature-v2.pdf). Topics in cognitive science, 5(1), 173-184.
+
+Frank, M. C., & Goodman, N. D. (2012). [Predicting pragmatic reasoning in language games](https://web.stanford.edu/~ngoodman/papers/FrankGoodman-Science2012.pdf). Science, 336(6084), 998-998.
+
+**Game theory**
+
+Frey, S., & Goldstone, R. L. (2013). [Cyclic game dynamics driven by iterated reasoning](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0056416). PloS one, 8(2), e56416.
