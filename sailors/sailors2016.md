@@ -265,3 +265,5 @@ Frank, M. C., & Goodman, N. D. (2012). [Predicting pragmatic reasoning in langua
 **Game theory**
 
 Frey, S., & Goldstone, R. L. (2013). [Cyclic game dynamics driven by iterated reasoning](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0056416). PloS one, 8(2), e56416.
+
+Axelrod, R. (1987). [The evolution of strategies in the iterated prisoner’s dilemma](https://books.google.com/books?hl=en&lr=&id=ddc9AAAAIAAJ&oi=fnd&pg=PA1&dq=iterated+prisoner%27s+dilemma&ots=0wgxNwDAW7&sig=TtUHGL896atq6OC_MCMqAywHs10#v=onepage&q&f=false). The dynamics of norms, 1-16.
